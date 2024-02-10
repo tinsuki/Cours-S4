@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Actions</title>
+  </head>
+  <body>
+    <button id="up">UP</button>
+    <button id="down">DOWN</button>
+    <button id="left">LEFT</button>
+    <button id="right">RIGHT</button><br>
+    <input type="text" id="username" value="username" placeholder="username">
+    <ul id="history">
+    </ul>
+  </body>
+  <script>
+    var upButton = document.getElementById("up");
+    var downButton = document.getElementById("down");
+    var leftButton = document.getElementById("left");
+    var rightButton = document.getElementById("right");
+    var username = document.getElementById("username");
+    var history = document.getElementById("history");
+
+    upButton.addEventListener("click", function() {
+        let strUsername = username.value;
+        const body = JSON.stringify({"username": strUsername, "type":"up"});
+
+        let response = fetch('http://localhost:3000/action', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body
+        });
+        console.log(response);
+        history.innerHTML = history.innerHTML + "<li>" + strUsername + " moved up</li>";
+    });
+
+    downButton.addEventListener("click", function() {
+        let strUsername = username.value;
+        const body = JSON.stringify({"username": strUsername, "type":"down"});
+        history.innerHTML = history.innerHTML + "<li>" + strUsername + " moved down</li>";
+
+        let response = fetch('http://localhost:3000/action', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body
+        });
+        console.log(response);
+        
+    });
+
+    leftButton.addEventListener("click", function() {
+        let strUsername = username.value;
+        const body = JSON.stringify({"username": strUsername, "type":"left"});
+
+        let response = fetch('http://localhost:3000/action', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body
+        });
+        console.log(response);
+        history.innerHTML = history.innerHTML + "<li>" + strUsername + " moved left</li>";
+    });
+
+    rightButton.addEventListener("click", function() {
+        let strUsername = username.value;
+        const body = JSON.stringify({"username": strUsername, "type":"right"});
+
+        let response = fetch('http://localhost:3000/action', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body
+        });
+        console.log(response);
+        history.innerHTML = history.innerHTML + "<li>" + strUsername + " moved right</li>";
+    });
+
+
+
+    
+  </script>
+</html>

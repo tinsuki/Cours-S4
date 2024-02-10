@@ -1,0 +1,32 @@
+// Crate a user 
+
+curl --location --request POST 'http://localhost:8080/api/users' \
+--header 'Content-Type: application/json' \
+--header 'X-Requested-With: XMLHttpRequest' \
+--data-raw '{"user":{"email":"test@test.org", "password":"testpassword", "username":"testusername"}}'
+
+// Create an article
+
+curl --location --request POST 'http://localhost:8080/api/articles' \
+--header 'Content-Type: application/json' \
+--header 'X-Requested-With: XMLHttpRequest' \
+--header 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VybmFtZSIsImVtYWlsIjoidGVzdEB0ZXN0Lm9yZyIsImlhdCI6MTY3NDIxMDEyOH0.3th91fQOSreR5d_PLg_Zc_KqdEMVd89i27fYumd2y_k' \
+--data-raw '{"article":{"title":"Test article", "description":"What else ?", "body":"body test ", "tagList":["TP", "QUAL4"]}}'
+
+
+
+// Get Authentication Token 
+
+
+curl --location --request POST 'http://localhost:8080/api/users/login' \
+--header 'Content-Type: application/json' \
+--header 'X-Requested-With: XMLHttpRequest' \
+--data-raw '{"user":{"email":"test@test.org", "password":"testpassword"}}'
+
+// Example with Authentication header
+
+
+curl --location --request GET 'http://localhost:8080/api/user' \
+--header 'Content-Type: application/json' \
+--header 'X-Requested-With: XMLHttpRequest' \
+--header 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VybmFtZSIsImVtYWlsIjoidGVzdEB0ZXN0Lm9yZyIsImlhdCI6MTY3NDIxMDEyOH0.3th91fQOSreR5d_PLg_Zc_KqdEMVd89i27fYumd2y_k'
